@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import logo from './logo.svg';
 
-
 export class Main extends Component{
 
     componentDidMount(){
