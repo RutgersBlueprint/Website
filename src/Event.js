@@ -10,12 +10,8 @@ import { FaInstagram } from 'react-icons/fa';
 import styled from 'styled-components';
 
 export class Event extends Component{
-    // constructor(props){super(props);}
     render(){
 
-        function email(){
-            
-        }
         const contactStyle = {
             height: '20px',
             width: 'auto',
@@ -28,8 +24,8 @@ export class Event extends Component{
                     <div id="signup"><a href="http://eepurl.com/gMQbx9" target="_blank"><h4>Sign up for our newsletter!</h4></a></div>
                     <div id ="info">
                         <h1>next event</h1>
-                        <h2>monday, feb 10</h2>
-                        <h2>9-10pm @ casc 411</h2>
+                        <h2>To be denounced</h2>
+                        <h2></h2>
                     </div>
                     <div id="contact">
                         <a href="https://www.facebook.com/rutgersblueprint" target="_blank"><FaFacebookF style={contactStyle}/></a>

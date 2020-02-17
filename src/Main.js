@@ -16,12 +16,10 @@ export class Main extends Component{
         const bg = this.refs.bg;
     
         function resizeCanvas(){
-            
-            // width = canvas.width = bg.offsetWidth;
-            // height = canvas.height = bg.offsetHeight;
             width = canvas.width = window.innerWidth * 0.6;
             height = canvas.height = window.innerHeight;
         }
+
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
@@ -42,7 +40,7 @@ export class Main extends Component{
         var y; 
         var rand; 
         var vx = 0; 
-        var vy = 1.3; //fall at same speed
+        var vy = 1.3;
         
         var startTime;
         canvas.onmousemove = function(e){       
@@ -51,7 +49,6 @@ export class Main extends Component{
             x = e.clientX - canvas.offsetLeft; 
             y = e.clientY - canvas.offsetTop;  
 
-            // objects.push(new Square(x, y, rand));
             var timeInterval = .1;
             var numOfSecondsSince = (Date.now() - startTime) / 1000;
 
@@ -65,7 +62,6 @@ export class Main extends Component{
             ctx.clearRect(0, 0, width, height);
             for (var i = 0; i < objects.length; i++) { 
                 var o = objects[i]
-                console.log(objects[i].posx + " " + objects[i].posy)
                 new Square(o.posx, o.posy, o.accelx);
                 o.posx += o.accelx
                 o.posy += vy    
