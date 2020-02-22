@@ -10,39 +10,40 @@ import { FaInstagram } from 'react-icons/fa';
 import Tooltip from 'react-bootstrap/Tooltip'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 
-export class Event extends Component{
+// import styled from 'styled-components'
+// import styled, { css } from 'styled-components'
 
-    render(){
-        function renderTooltip(props) {
-        return <Tooltip {...props}>Copied!</Tooltip>;
-        }
-          
-        function copyToClipboard() {
-            navigator.permissions.query({name: "clipboard-write"}).then(result => {
-                if (result.state == "granted" || result.state == "prompt") {
-                    function updateClipboard(newClip) {
-                        navigator.clipboard.writeText(newClip).then(function() {
-                          /* clipboard successfully set */
-                        }, function() {
-                          /* clipboard write failed */
-                        });
-                      }
-                    updateClipboard("rutgersblueprint@gmail.com");
+function renderTooltip(props) {
+    return <Tooltip {...props}>Copied!</Tooltip>;
+}
+    
+function copyToClipboard() {
+    navigator.permissions.query({name: "clipboard-write"}).then(result => {
+        if (result.state == "granted" || result.state == "prompt") {
+            function updateClipboard(newClip) {
+                navigator.clipboard.writeText(newClip).then(function() {
+                    /* clipboard successfully set */
+                }, function() {
+                    /* clipboard write failed */
+                });
                 }
-              });
-          }
-          
+            updateClipboard("rutgersblueprint@gmail.com");
+        }
+    });
+}
+
+export class Event extends Component{
+    render(){       
         const contactStyle = {
             height: '20px',
             width: 'auto',
             margin: '10px'   
-        };
-
-        return(
-            <div id ="bg-event" ref="bg">
-                <div id="leftpanel">
+        }
+        return( 
+            <div id ="event_bg">
+                <div id="event_panel">
                     <div id="signup"><a href="http://eepurl.com/gMQbx9" target="_blank"><h4>Sign up for our newsletter!</h4></a></div>
-                    <div id ="info">
+                    <div id="info">
                         <h1>next event</h1>
                         <h2>to be denounced</h2>
                         <h2></h2>

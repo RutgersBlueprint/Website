@@ -12,11 +12,15 @@ export class Main extends Component{
 
         var width = 0; 
         var height = 0; 
-        const bg = this.refs.bg;
-    
+
+        var main = this.refs.main;
+        var canvasdiv = this.refs.canvas_div;
+
         function resizeCanvas(){
-            width = canvas.width = window.innerWidth * 0.6;
-            height = canvas.height = window.innerHeight;
+            width = canvas.width = canvasdiv.getBoundingClientRect().width;
+            height = canvas.height = canvasdiv.getBoundingClientRect().height;
+            // Math.floor(width = canvas.width = window.innerWidth * 0.6);
+            // Math.floor(height = canvas.height = window.innerHeight);
         }
 
         window.addEventListener('resize', resizeCanvas);
@@ -45,9 +49,10 @@ export class Main extends Component{
         canvas.onmousemove = function(e){       
             rand = Math.random(-0.0007, 0.0007);
 
-            x = e.clientX - canvas.offsetLeft; 
-            y = e.clientY - canvas.offsetTop;  
-
+            console.log("x: " + x + " y: " + y); 
+            x = e.screenX - main.offsetLeft; 
+            y = e.screenY - main.offsetTop;  
+            
             var timeInterval = .1;
             var numOfSecondsSince = (Date.now() - startTime) / 1000;
 
@@ -67,7 +72,6 @@ export class Main extends Component{
 
                 vx = 0;
                 vy = 1.3; 
-                
             }
             requestAnimationFrame(animate);
         }
@@ -78,12 +82,12 @@ export class Main extends Component{
     
     render(){
         return(
-            <div id="bg-main" ref="bg">
-                <div id="rightpanel">
-                    <div id="header">
-                        <img ref="image" src={logo}></img>
-                        <h3>student design at rutgers university</h3> 
-                    </div>         
+            <div id="main_bg" ref="main">
+                <div id="header">
+                    <img ref="image" src={logo}></img>
+                    <h3>student design at rutgers university</h3> 
+                </div>  
+                <div id = "canvas_div" ref="canvas_div">       
                     <canvas ref="canvas"></canvas>  
                 </div>
             </div>
