@@ -19,8 +19,6 @@ export class Main extends Component{
         function resizeCanvas(){
             width = canvas.width = canvasdiv.getBoundingClientRect().width;
             height = canvas.height = canvasdiv.getBoundingClientRect().height;
-            // Math.floor(width = canvas.width = window.innerWidth * 0.6);
-            // Math.floor(height = canvas.height = window.innerHeight);
         }
 
         window.addEventListener('resize', resizeCanvas);
@@ -33,8 +31,12 @@ export class Main extends Component{
 
             ctx.strokeStyle = "#52A5E0";
             ctx.lineWidth = 0.5; 
- 
-            ctx.strokeRect(posx, posy, 120, 120); 
+            
+            if (window.innerWidth > 411){
+                ctx.strokeRect(posx, posy, 120, 120); 
+            } else{
+                ctx.strokeRect(posx, posy, 80, 80); 
+            }
         }
 
         var objects = [];
@@ -49,7 +51,6 @@ export class Main extends Component{
         canvas.onmousemove = function(e){       
             rand = Math.random(-0.0007, 0.0007);
 
-            console.log("x: " + x + " y: " + y); 
             x = e.screenX - main.offsetLeft; 
             y = e.screenY - main.offsetTop;  
             

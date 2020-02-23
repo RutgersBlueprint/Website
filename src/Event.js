@@ -13,6 +13,12 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 // import styled from 'styled-components'
 // import styled, { css } from 'styled-components'
 
+const contactStyle = {
+    height: '20px',
+    width: 'auto',
+    margin: '10px'   
+}
+    
 function renderTooltip(props) {
     return <Tooltip {...props}>Copied!</Tooltip>;
 }
@@ -32,13 +38,32 @@ function copyToClipboard() {
     });
 }
 
+function Mobile(){
+    return <a href="mailto: rutgersblueprint@gmail.com" target="_blank"><FaRegEnvelope style={contactStyle}/></a>
+}
+
+function Desktop(){
+    return <OverlayTrigger trigger="focus" placement="top" delay={{ show: 250, hide: 400 }} overlay={renderTooltip}><a href="javascript:void(0)" onClick={copyToClipboard}><FaRegEnvelope style={contactStyle}/></a></OverlayTrigger>
+}
+
 export class Event extends Component{
-    render(){       
-        const contactStyle = {
-            height: '20px',
-            width: 'auto',
-            margin: '10px'   
+
+    state = {
+        mobile: true
+    }
+
+    constructor(props){
+        super(props); 
+        const device = this.props.device;
+
+        if (device == "mobile"){
+            this.state.mobile = true;
+        } else { 
+            this.state.mobile = false; 
         }
+    }
+
+    render(){       
         return( 
             <div id ="event_bg">
                 <div id="event_panel">
@@ -51,7 +76,7 @@ export class Event extends Component{
                     <div id="contact">
                         <a href="https://www.facebook.com/rutgersblueprint" target="_blank"><FaFacebookF style={contactStyle}/></a>
                         <a href="https://www.instagram.com/rutgersblueprint/" target="_blank"><FaInstagram style={contactStyle}/></a>
-                        <OverlayTrigger trigger="focus" placement="top" delay={{ show: 250, hide: 400 }} overlay={renderTooltip}><a href="javascript:void(0)" onClick={copyToClipboard}><FaRegEnvelope style={contactStyle}/></a></OverlayTrigger>
+                        {this.state.mobile ? <Mobile /> : <Desktop />}
                     </div>
                 </div>
             </div>

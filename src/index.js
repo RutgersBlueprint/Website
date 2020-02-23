@@ -8,32 +8,26 @@ import "./style.scss";
 import Event from './Event'
 import Main from './Main'
 
-class Site extends Component{ 
-    constructor(props){
-        super(props); 
-        let width = window.innerWidth;
-        
-        this.state = {};
+import MediaQuery from "react-responsive";
 
-        if (width > 375){
-            this.state.renderComponent = (
-                <div className="d_box">
-                    <Event />
-                    <Main />
-                </div>
-            )
-        } else { //small screens
-            this.state.renderComponent = (
-                <div className = "m_box">
-                    <Event />
-                    <Main />
-                </div>
-            )
-        }
-    }
+class Site extends Component{ 
 
     render(){
-        return this.state.renderComponent; 
+        return <div id="box">
+            <MediaQuery query="(min-device-width: 412px)">
+                <div id="d_box">
+                    <Event device="desktop"/>
+                    <Main />
+                </div>
+            </MediaQuery>
+                
+            <MediaQuery query="(max-device-width: 411px)">
+                <div id = "m_box">
+                    <Main />
+                    <Event device="mobile"/>
+                </div>
+            </MediaQuery>
+        </div>
     }
 }
 

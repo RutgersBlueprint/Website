@@ -1,4 +1,9 @@
-.d_box{
+#box{
+    height: 100%; 
+    width: 100%; 
+}
+
+#d_box{
     display:flex; 
     flex-direction:row;
     height: 100%; 
@@ -45,6 +50,12 @@
             flex-direction: row;
             position: absolute; 
             bottom: 5%; 
+
+            a:hover{
+                color: #FFCD83;
+                text-decoration: none;
+            }
+
         }
     }
   }
@@ -90,7 +101,7 @@
 
 /*** Mobile ****/
 
-.m_box{
+#m_box{
     display:flex; 
     flex-direction:column;
     height: 100%; 
@@ -98,7 +109,7 @@
   #event_bg{
     display: flex;
     align-items: center;
-    height: 40%;
+    height: 50%;
     background-color: #FFFFFF;
 
     #event_panel{
@@ -122,6 +133,10 @@
             a:hover{
                 color: #52A5E0;
             }
+
+            a:visited{
+                color: #52A5E0;
+            }
         }
 
         #info{
@@ -138,6 +153,11 @@
             flex-direction: row;
             position: absolute; 
             bottom: 5%; 
+
+            a:visited{
+                color: #FFCD83;
+                text-decoration: none;
+            }
         }
     }
   }
@@ -145,7 +165,7 @@
     #main_bg{
         display: flex;
         align-items: center;
-        height: 60%; 
+        height: 50%; 
         background-color: #2B2B2B;
         position: relative;
         z-index: 0; 
@@ -175,8 +195,6 @@
             width: 100%;
             margin: 0; 
             padding: 0;
-            // display: block;
-            // border: 0px; 
         }
     }  
 }
